@@ -1,0 +1,67 @@
+diff --git a/config/sample_jpab_config.xml b/config/sample_jpab_config.xml
+index 714ea7e..e3cf91f 100644
+--- a/config/sample_jpab_config.xml
++++ b/config/sample_jpab_config.xml
+@@ -1,11 +1,11 @@
+ <?xml version="1.0"?>
+ <parameters>
+     <!-- Connection details -->
+-    <dbtype>mysql</dbtype>
+-    <driver>com.mysql.jdbc.Driver</driver>
+-    <DBUrl>jdbc:mysql://server:3306/jpab</DBUrl>
+-    <username>user</username>
+-    <password>password</password>
++    <dbtype>sqlserver</dbtype>
++    <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
++    <DBUrl>jdbc:sqlserver://localhost:1433;databaseName=master</DBUrl>
++    <username>sa</username>
++    <password>YourStrong!Passw0rd</password>
+     <isolation>TRANSACTION_SERIALIZABLE</isolation>
+     
+     <!-- Number of Initial Objects -->
+diff --git a/src/META-INF/persistence.xml b/src/META-INF/persistence.xml
+index bae301b..5cbc476 100644
+--- a/src/META-INF/persistence.xml
++++ b/src/META-INF/persistence.xml
+@@ -1,26 +1,27 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+   <persistence-unit name="Hibernate-MySQL-server">
+-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
++    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+     <properties>
+-      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://ec2-50-16-99-183.compute-1.amazonaws.com:3306/jpab"/>
+-      <property name="javax.persistence.jdbc.user" value="oltp"/>
+-      <property name="javax.persistence.jdbc.password" value=""/>
+-      <property name="jpab.driver" value="com.mysql.jdbc.Driver"/>
+-      <property name="jpab.url" value="jdbc:mysql://ec2-50-16-99-183.compute-1.amazonaws.com:3306/jpab"/>
+-      <property name="jpab.user" value="oltp"/>
+-      <property name="jpab.password" value=""/>
++      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
++      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=jpab"/>
++      <property name="javax.persistence.jdbc.user" value="sa"/>
++      <property name="javax.persistence.jdbc.password" value="YourStrong!Passw0rd"/>
++      <property name="jpab.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
++      <property name="jpab.url" value="jdbc:sqlserver://localhost:1433;databaseName=jpab"/>
++      <property name="jpab.user" value="sa"/>
++      <property name="jpab.password" value="YourStrong!Passw0rd"/>
+       <property name="hibernate.jdbc.batch_versioned_data" value="true" />
+       <property name="hibernate.jdbc.batch_size" value="30" />
+       <property name="hibernate.jdbc.fetch_size" value="100" />
+       <property name="hibernate.id.new_generator_mappings" value="true" />
+       <property name="hibernate.order_updates" value="true" />
+-      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+-      <property name="hibernate.c3p0.max_statements" value="100" />
+-      <property name="hibernate.c3p0.timeout" value="1800" />
+-      <property name="hibernate.c3p0.max_size" value="20" />
+-      <property name="hibernate.c3p0.min_size" value="5" />
++      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
++      <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
++      <property name="hibernate.hikari.maximumPoolSize" value="10" />
++      <property name="hibernate.hikari.jdbcUrl" value="jdbc:sqlserver://localhost:1433;databaseName=jpab" />
++      <property name="hibernate.hikari.dataSource.user" value="sa" />
++      <property name="hibernate.hikari.dataSource.password" value="YourStrong!Passw0rd" />
+       <property name="javax.persistence.validation.mode" value="NONE" />
+       <property name="hibernate.hbm2ddl.auto" value="update" />
+       <property name="hibernate.bytecode.provider" value="javassist" />
