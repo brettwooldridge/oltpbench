@@ -6,7 +6,7 @@
     <DBUrl>jdbc:sqlserver://localhost:1433;databaseName=master</DBUrl>
     <username>sa</username>
     <password>YourStrong!Passw0rd</password>
-    <isolation>TRANSACTION_SERIALIZABLE</isolation>
+    <isolation>TRANSACTION_READ_COMMITTED</isolation>
     
     <!-- Number of Initial Objects -->
     <scalefactor>1000000</scalefactor>
