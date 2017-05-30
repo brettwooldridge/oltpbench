@@ -4,9 +4,9 @@
     <!-- Connection details -->
     <dbtype>sqlserver</dbtype>
     <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
-    <DBUrl>jdbc:sqlserver://localhost:1433;databaseName=master;statementPoolingCacheSize=100;serverPreparedStatementDiscardThreshold=100</DBUrl>
+    <DBUrl>jdbc:sqlserver://localhost:1433;databaseName=epinions;statementPoolingCacheSize=100;serverPreparedStatementDiscardThreshold=100;enablePrepareOnFirstPreparedStatementCall=true;</DBUrl>
     <username>sa</username>
-    <password>YourStrong!Passw0rd</password>
+    <password>&lt;YourStrong!Passw0rd></password>
     <isolation>TRANSACTION_READ_COMMITTED</isolation>
     
     <!-- Scalefactor in Epinions scales by *2000 the number of users-->
@@ -16,7 +16,7 @@
     <terminals>10</terminals>
     <works>
         <work>
-          <time>150</time>
+          <time>120</time>
           <rate>10000</rate>
           <weights>10,10,10,10,10,10,10,10,20</weights>
         </work>

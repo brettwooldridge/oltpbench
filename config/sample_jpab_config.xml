@@ -5,7 +5,7 @@
     <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
     <DBUrl>jdbc:sqlserver://localhost:1433;databaseName=master;statementPoolingCacheSize=100;serverPreparedStatementDiscardThreshold=100</DBUrl>
     <username>sa</username>
-    <password>YourStrong!Passw0rd</password>
+    <password>&lt;YourStrong!Passw0rd&gt;</password>
     <isolation>TRANSACTION_READ_COMMITTED</isolation>
 
     <!-- Number of Initial Objects -->
