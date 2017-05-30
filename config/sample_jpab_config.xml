@@ -3,30 +3,30 @@
     <!-- Connection details -->
     <dbtype>sqlserver</dbtype>
     <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
-    <DBUrl>jdbc:sqlserver://localhost:1433;databaseName=master</DBUrl>
+    <DBUrl>jdbc:sqlserver://localhost:1433;databaseName=master;statementPoolingCacheSize=100;serverPreparedStatementDiscardThreshold=100</DBUrl>
     <username>sa</username>
     <password>YourStrong!Passw0rd</password>
     <isolation>TRANSACTION_READ_COMMITTED</isolation>
-    
+
     <!-- Number of Initial Objects -->
     <scalefactor>1000000</scalefactor>
-    
+
     <!-- Hibernate configuration -->
     <persistence-unit>Hibernate-MySQL-server</persistence-unit>
-    
+
     <!-- Type of Objects -->
     <testClass>BasicTest</testClass>
-      
-    <!-- The workload -->  
-    <terminals>10</terminals>  
+
+    <!-- The workload -->
+    <terminals>6</terminals>
     <works>
         <work>
-            <time>10</time>
+            <time>40</time>
             <rate>10000</rate>
-            <weights>25,25,25,25</weights>
+            <weights>5,75,15,5</weights>
         </work>
     </works>
-    
+
     <!-- JPAB Procedures Declaration -->
     <transactiontypes>
         <transactiontype>

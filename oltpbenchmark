@@ -1,3 +1,6 @@
 #!/bin/bash
-java -Xmx8G -cp `./classpath.sh bin` -Dlog4j.configuration=log4j.properties com.oltpbenchmark.DBWorkload $@
+# java -agentpath:/Applications/jprofiler8/bin/macos/libjprofilerti.jnilib=port=8849 -Xmx8G -cp `./classpath.sh bin` -Dlog4j.configuration=log4j.properties com.oltpbenchmark.DBWorkload $@
 
+# java -Xdebug -Xrunjdwp:transport=dt_socket,address=8787,server=y,suspend=y -Xmx8G -cp `./classpath.sh bin` -Dlog4j.configuration=log4j.properties com.oltpbenchmark.DBWorkload $@
+
+java -Xmx8G -cp `./classpath.sh bin` -Dlog4j.configuration=log4j.properties com.oltpbenchmark.DBWorkload $@

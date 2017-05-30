@@ -40,6 +40,7 @@ import com.oltpbenchmark.types.DatabaseType;
 import com.oltpbenchmark.util.ClassUtil;
 import com.oltpbenchmark.util.ScriptRunner;
 import com.oltpbenchmark.util.ThreadUtil;
+import com.zaxxer.hikari.HikariDataSource;
 
 /**
  * Base class for all benchmark implementations
@@ -83,6 +84,7 @@ public abstract class BenchmarkModule {
      */
     private final Random rng = new Random();
 
+    private final HikariDataSource ds = new HikariDataSource();
     /**
      * Whether to use verbose output messages
      * @deprecated
@@ -97,6 +99,12 @@ public abstract class BenchmarkModule {
         this.catalog = (withCatalog ? new Catalog(this) : null);
         File xmlFile = this.getSQLDialect();
         this.dialects = new StatementDialects(this.workConf.getDBType(), xmlFile);
+
+        ds.setJdbcUrl(workConf.getDBConnection());
+        ds.setUsername(workConf.getDBUsername());
+        ds.setPassword(workConf.getDBPassword());
+        ds.setMaximumPoolSize(12);
+        ds.setAutoCommit(false);
     }
 
     // --------------------------------------------------------------------------
@@ -109,10 +117,7 @@ public abstract class BenchmarkModule {
      * @throws SQLException
      */
     public final Connection makeConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection(
-                workConf.getDBConnection(),
-                workConf.getDBUsername(),
-                workConf.getDBPassword());
+        Connection conn = ds.getConnection();
         Catalog.setSeparator(conn);
         return (conn);
     }

@@ -38,5 +38,6 @@
 	<classpathentry kind="lib" path="lib/postgresql-9.4.1209.jre6.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/hibernate-core-5.2.9.Final.jar"/>
 	<classpathentry kind="lib" path="lib/hibernate/hibernate-hikaricp-5.2.9.Final.jar"/>
+	<classpathentry kind="lib" path="lib/HikariCP-2.6.1.jar"/>
 	<classpathentry kind="output" path="build"/>
 </classpath>

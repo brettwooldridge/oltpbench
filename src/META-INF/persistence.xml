@@ -16,12 +16,16 @@
       <property name="hibernate.jdbc.fetch_size" value="100" />
       <property name="hibernate.id.new_generator_mappings" value="true" />
       <property name="hibernate.order_updates" value="true" />
-      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+      <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServer2012Dialect" />
       <property name="hibernate.connection.provider_class" value="org.hibernate.hikaricp.internal.HikariCPConnectionProvider" />
-      <property name="hibernate.hikari.maximumPoolSize" value="10" />
-      <property name="hibernate.hikari.jdbcUrl" value="jdbc:sqlserver://localhost:1433;databaseName=jpab" />
+      <property name="hibernate.hikari.maximumPoolSize" value="12" />
+      <property name="hibernate.hikari.jdbcUrl" value="jdbc:sqlserver://localhost:1433;databaseName=jpab;statementPoolingCacheSize=100;serverPreparedStatementDiscardThreshold=100" />
+      <property name="hibernate.hikari.autoCommit" value="false" />
       <property name="hibernate.hikari.dataSource.user" value="sa" />
       <property name="hibernate.hikari.dataSource.password" value="YourStrong!Passw0rd" />
+      <property name="hibernate.hikari.dataSource.statementPoolingCacheSize" value="100" />
+      <property name="hibernate.hikari.dataSource.serverPreparedStatementDiscardThreshold" value="100" />
+      <property name="hibernate.hikari.dataSource.enablePrepareOnFirstPreparedStatementCall" value="true" />
       <property name="javax.persistence.validation.mode" value="NONE" />
       <property name="hibernate.hbm2ddl.auto" value="update" />
       <property name="hibernate.bytecode.provider" value="javassist" />
